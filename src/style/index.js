@@ -27,6 +27,7 @@ const ResetCss = css`
   audio,
   b,
   big,
+  button,
   blockquote,
   body,
   canvas,
