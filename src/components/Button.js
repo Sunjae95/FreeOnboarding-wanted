@@ -7,7 +7,7 @@ const ButtonWrapper = styled.button`
   height: ${({ buttonHeight }) => `${buttonHeight}px`};
 `;
 
-function Button({ children, buttonWidth, buttonHeight, ...props }) {
+const Button = ({ children, buttonWidth, buttonHeight, ...props }) => {
   return (
     <ButtonWrapper
       buttonWidth={buttonWidth}
@@ -17,7 +17,7 @@ function Button({ children, buttonWidth, buttonHeight, ...props }) {
       {children}
     </ButtonWrapper>
   );
-}
+};
 
 Button.propTypes = {
   buttonWidth: PropTypes.number,
