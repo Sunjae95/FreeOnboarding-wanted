@@ -5,12 +5,14 @@ const ResetCss = css`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     font-size: 10px;
     font-family: sans-serif;
+    font-smoothing: antialiased;
+    text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%; /* 크롬, 사파리, 오페라 신버전 */
-    -ms-text-size-adjust: 100%; /* IE */
-    -moz-text-size-adjust: 100%; /* 파이어폭스 */
-    -o-text-size-adjust: 100%; /* 오페라 구버전 */
+    // -webkit-text-size-adjust: 100%; /* 크롬, 사파리, 오페라 신버전 */
+    // -ms-text-size-adjust: 100%; /* IE */
+    // -moz-text-size-adjust: 100%; /* 파이어폭스 */
+    // -o-text-size-adjust: 100%; /* 오페라 구버전 */
   }
   *:before,
   *:after {
@@ -102,6 +104,19 @@ const ResetCss = css`
     margin: 0;
     padding: 0;
     border: 0;
+  }
+  ul,
+  ol {
+    list-style: none;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333333;
+    background-color: #f8f8fa;
   }
 `;
 
