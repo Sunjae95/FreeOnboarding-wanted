@@ -1,14 +1,16 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import { GlobalStyle } from './style';
+import Slide from './components/Slide';
+import GNB from './components/GNB';
 
-const AppContainer = styled.div`
-  display: flex;
-  width: 100px;
-  height: 100px;
-  background-color: red;
-`;
-
-function App() {
-  return <AppContainer className="App"></AppContainer>;
-}
+const App = () => {
+  return (
+    <>
+      <GlobalStyle />
+      <GNB />
+      <Slide />
+    </>
+  );
+};
 
 export default App;
