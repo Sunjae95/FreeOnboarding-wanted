@@ -5,12 +5,13 @@ import Image from './Image';
 import Information from './Information';
 
 const SlideItemContainer = styled.div`
-  outline: none;
-  width: 1060px;
-  float: left;
+  width: ${window.innerWidth / 2}px;
   height: 100%;
-  min-height: 1px;
+  outline: none;
   position: relative;
+  min-height: 1px;
+  flex-shrink: 0;
+
   //media
   padding: 0 12px;
   box-sizing: content-box;
@@ -25,13 +26,13 @@ const Wrapper = styled.div`
   display: inline-block;
 `;
 
-const SlideItem = ({ isFocus, src, title, content, ...props }) => {
+const SlideItem = ({ slideRef, src, isMain, title, content }) => {
   return (
-    <SlideItemContainer {...props}>
+    <SlideItemContainer ref={slideRef}>
       <MediaWrapper>
         <Wrapper>
-          <Image isFocus={isFocus} src={src} />
-          <Information title={title} content={content} />
+          <Image src={src} isMain={isMain} />
+          {isMain && <Information title={title} content={content} />}
         </Wrapper>
       </MediaWrapper>
     </SlideItemContainer>
@@ -39,7 +40,7 @@ const SlideItem = ({ isFocus, src, title, content, ...props }) => {
 };
 
 SlideItem.propTypes = {
-  isFocus: PropTypes.bool,
+  isMain: PropTypes.bool,
   src: PropTypes.string,
   title: PropTypes.string,
   content: PropTypes.string,
