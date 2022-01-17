@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
-import SlideBox from './SlideBox';
 import { slideContents } from '@assets/data';
 import { prev, next } from '@utils';
+import SlideBox from './SlideBox';
+import Buttons from './Buttons';
 
 const SlideContainer = styled.div`
   position: relative;
@@ -25,6 +26,24 @@ const ButtonContainer = styled.div`
   display: block;
   overflow: hidden;
   margin: 0;
+`;
+
+const Button = styled.button`
+  width: 30px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 120px;
+  width: 30px;
+  height: 60px;
+  opacity: 0.5;
+  border-radius: 15px;
+  background-color: #fff;
+
+  left: ${({ isLeft }) => isLeft && `${isLeft / 5}px`};
+  right: ${({ isRight }) => isRight && `${isRight / 9}px`};
 `;
 
 const DRAG_OFFSET = 300;
@@ -69,11 +88,11 @@ const Slide = ({ ...props }) => {
     setLeft(dragData.current.baseLeft);
   }, [index, dragging]);
 
-  const handleClickLeft = () => {
+  const handleClickLeft = (e) => {
     setIndex(prev(index, lastIndex));
   };
 
-  const handleClickRight = () => {
+  const handleClickRight = (e) => {
     setIndex(next(index, lastIndex));
   };
 
@@ -120,10 +139,10 @@ const Slide = ({ ...props }) => {
             slideRef={slideRef}
             left={left}
           />
-          {/* 좌버튼 */}
-          <button onClick={handleClickLeft}>left</button>
-          {/* 우 버튼*/}
-          <button onClick={handleClickRight}>right</button>
+          <Buttons
+            handleClickLeft={handleClickLeft}
+            handleClickRight={handleClickRight}
+          />
         </ButtonContainer>
       </SlideWrapper>
     </SlideContainer>
