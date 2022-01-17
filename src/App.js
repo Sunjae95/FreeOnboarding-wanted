@@ -1,13 +1,14 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import { GlobalStyle } from './style';
+import Slide from './components/Slide';
+import GNB from './components/GNB';
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      {/* GNB */}
-      {/* Slide */}
+      <GNB />
+      <Slide />
     </>
   );
 };
