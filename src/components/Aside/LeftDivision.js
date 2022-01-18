@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { ListWrapper } from './ListItem';
+import { ListItem } from '@components/base';
+import { MediaQueries } from '@style/mediaQuery';
 
-const ServiceWrapper = styled(ListWrapper)`
+const ServiceWrapper = styled(ListItem)`
   display: inline-flex;
 
   &: before {
@@ -12,6 +13,10 @@ const ServiceWrapper = styled(ListWrapper)`
     height: 10px;
     background-color: #e1e2e3;
     margin: auto 10px;
+  }
+
+  ${MediaQueries({ maxWidth: 991 })} {
+    display: none;
   }
 `;
 

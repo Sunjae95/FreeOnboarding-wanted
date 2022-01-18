@@ -3,8 +3,10 @@ import styled from '@emotion/styled';
 import { MediaQueries } from '../../style/mediaQuery';
 
 const ListItemWrapper = styled.li`
+  position: relative;
   display: inline-block;
-  height: inherit;
+  height: 100%;
+  vertical-align: middle;
 
   &: first-of-type {
     ${MediaQueries({ minWidth: 767 })} {
