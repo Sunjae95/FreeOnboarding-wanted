@@ -1,25 +1,34 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import ListItem from './ListItem';
-import { ReactComponent as NewIcon } from '@assets/icon/new-icon.svg';
-import { ReactComponent as BetaIcon } from '@assets/icon/beta-icon.svg';
 import MenuText from './MenuText';
+import { MediaQueries } from '@style/mediaQuery';
+import { menuItems } from '@assets/data';
+
+const MainMenuContainer = styled.ul`
+  height: inherit;
+  text-align: center;
+  margin: 0;
+
+  ${MediaQueries({ maxWidth: 767 })} {
+    text-align: left;
+  }
+  ${MediaQueries({ minWidth: 768, maxWidth: 991 })} {
+    justify-content: flex-start;
+    margin-right: 30px;
+  }
+  ${MediaQueries({ minWidth: 992, maxWidth: 1100 })} {
+    display: flex;
+    flex: 1 1;
+    justify-content: space-evenly;
+  }
+`;
 
 const DynamicTag = styled.div``;
 
 const MainMenu = ({ ...props }) => {
-  const menuItems = [
-    { text: '채용', badge: null },
-    { text: '이벤트', badge: null },
-    { text: '직군별 연봉', badge: null },
-    { text: '이력서', badge: null },
-    { text: '커뮤니티', badge: { tag: 'em', text: <NewIcon /> } },
-    { text: '프리랜서', badge: null },
-    { text: 'AI 합격예측', badge: { tag: 'span', text: <BetaIcon /> } },
-  ];
-
   return (
-    <ul {...props}>
+    <MainMenuContainer {...props}>
       {menuItems.map((menuItem, i) => (
         <ListItem key={i}>
           <MenuText>
@@ -32,7 +41,7 @@ const MainMenu = ({ ...props }) => {
           </MenuText>
         </ListItem>
       ))}
-    </ul>
+    </MainMenuContainer>
   );
 };
 
