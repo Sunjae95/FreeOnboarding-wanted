@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { MediaQueries } from '../../style/mediaQuery';
+import { MediaQueries } from '@style/mediaQuery';
 
 const ListItemWrapper = styled.li`
   position: relative;

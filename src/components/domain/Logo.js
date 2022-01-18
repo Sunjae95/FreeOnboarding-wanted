@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import '@style/logo.css';
-import Button from '../Button';
+import Button from '../base/Button';
 import MenuImage from '@assets/icon/menu-icon.png';
 import { MediaQueries } from '@style/mediaQuery';
 
