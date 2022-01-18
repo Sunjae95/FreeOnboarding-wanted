@@ -4,7 +4,7 @@ import { MediaQueries } from '@style/mediaQuery';
 
 const IconWrapper = styled.button`
   margin: 0;
-  padding: 0;
+  padding: 0 5px;
   border: 0;
   background: none;
 

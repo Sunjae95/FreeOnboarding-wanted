@@ -33,6 +33,10 @@ const ServiceText = styled.a`
   padding: 0 10px;
   margin-left: 15px;
   font-weight: 400;
+
+  ${MediaQueries({ minWidth: 992, maxWidth: 1199 })} {
+    margin: 0;
+  }
 `;
 
 const DashBoard = ({ ...props }) => {
