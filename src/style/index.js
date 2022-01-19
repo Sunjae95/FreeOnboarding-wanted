@@ -9,10 +9,6 @@ const ResetCss = css`
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    // -webkit-text-size-adjust: 100%; /* 크롬, 사파리, 오페라 신버전 */
-    // -ms-text-size-adjust: 100%; /* IE */
-    // -moz-text-size-adjust: 100%; /* 파이어폭스 */
-    // -o-text-size-adjust: 100%; /* 오페라 구버전 */
   }
   *:before,
   *:after {
@@ -108,6 +104,12 @@ const ResetCss = css`
   ul,
   ol {
     list-style: none;
+  }
+  button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
   }
   * {
     box-sizing: border-box;

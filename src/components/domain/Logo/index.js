@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import '@style/logo.css';
-import Button from '../base/Button';
 import MenuImage from '@assets/icon/menu-icon.png';
 import { MediaQueries } from '@style/mediaQuery';
 
@@ -27,9 +26,12 @@ const LogoWrapper = styled.div`
   display: flex;
 `;
 
-const MainbarButton = styled(Button)`
+const MainbarButton = styled.button`
   margin-top: -2px;
   margin-right: 15px;
+  border: 0;
+  background: none;
+  overflow: visible;
 `;
 
 const MenuIcon = styled.img`

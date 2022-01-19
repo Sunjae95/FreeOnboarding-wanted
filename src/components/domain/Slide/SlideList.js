@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import PropTypes from 'prop-types';
 import SlideItem from './SlideItem';
 import { slideContents } from '@assets/data';
 import { pick } from '@utils';
@@ -7,20 +8,21 @@ import { pick } from '@utils';
 const SlideBoxContainer = styled.div`
   display: flex;
   position: relative;
-  transform: translate(${({ left }) => `${left}px`}, 0);
   top: 0;
+  transform: translate(${({ left }) => `${left}px`}, 0);
   box-sizing: border-box;
+  margin-bottom: 0;
 `;
 
 const lastIndex = slideContents.length - 1;
 
-const SlideBox = ({
+const SlideList = ({
   index,
   onMouseDown,
   onMouseMove,
   onMouseUp,
-  slideBoxRef,
-  slideRef,
+  slideListRef,
+  slideItemRef,
   left,
 }) => {
   const slides = [
@@ -36,21 +38,37 @@ const SlideBox = ({
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
-      ref={slideBoxRef}
+      ref={slideListRef}
       left={left}
     >
       {slides.map(({ src, title, content }, i) => (
         <SlideItem
           key={i}
-          src={src}
-          isMain={i === 2}
+          imgUrl={src}
+          isFocus={i === 2}
           title={title}
           content={content}
-          slideRef={slideRef}
+          slideItemRef={slideItemRef}
         />
       ))}
     </SlideBoxContainer>
   );
 };
 
-export default SlideBox;
+SlideList.propTypes = {
+  index: PropTypes.number,
+  onMouseDown: PropTypes.func,
+  onMouseMove: PropTypes.func,
+  onMouseUp: PropTypes.func,
+  slideListRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(HTMLElement) }),
+  ]),
+  slideItemRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(HTMLElement) }),
+  ]),
+  left: PropTypes.number,
+};
+
+export default SlideList;
