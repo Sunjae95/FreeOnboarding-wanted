@@ -1,14 +1,15 @@
 import React from 'react';
-import { GlobalStyle } from './style';
-import Slide from './components/Slide';
-import GNB from './components/GNB';
+import { GlobalStyle } from '@style';
+import { GNB, Main } from '@components/templates';
+import { Padding } from '@components/base';
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
       <GNB />
-      <Slide />
+      <Padding />
+      <Main />
     </>
   );
 };
