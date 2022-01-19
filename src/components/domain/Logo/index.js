@@ -1,22 +1,37 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import '@style/logo.css';
-import Button from '../Button';
 import MenuImage from '@assets/icon/menu-icon.png';
+import { MediaQueries } from '@style/mediaQuery';
 
 const LogoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  ${MediaQueries({ minWidth: 768, maxWidth: 991 })} {
+    height: 60px;
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  ${MediaQueries({ maxWidth: 767 })} {
+    height: 60px;
+    width: 100%;
+    padding: 15px 20px;
+  }
 `;
 
 const LogoWrapper = styled.div`
   display: flex;
 `;
 
-const MainbarButton = styled(Button)`
+const MainbarButton = styled.button`
   margin-top: -2px;
   margin-right: 15px;
+  border: 0;
+  background: none;
+  overflow: visible;
 `;
 
 const MenuIcon = styled.img`

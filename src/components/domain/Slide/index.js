@@ -2,48 +2,17 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { slideContents } from '@assets/data';
 import { prev, next } from '@utils';
-import SlideBox from './SlideBox';
-import Buttons from './Buttons';
+import SlideList from './SlideList';
+import { ArrowButton } from '@components/base';
+import { MediaQueries } from '@style/mediaQuery';
 
-const SlideContainer = styled.div`
+const TopBanner = styled.div`
   position: relative;
   overflow: hidden;
-  //media
-  height: auto;
-`;
-const SlideWrapper = styled.div`
-  margin-bottom: 0;
-  position: relative;
-  display: block;
-  box-sizing: border-box;
-  user-select: none;
-  touch-action: pan-y;
-`;
 
-const ButtonContainer = styled.div`
-  padding: 0px 50px;
-  position: relative;
-  display: block;
-  overflow: hidden;
-  margin: 0;
-`;
-
-const Button = styled.button`
-  width: 30px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 120px;
-  width: 30px;
-  height: 60px;
-  opacity: 0.5;
-  border-radius: 15px;
-  background-color: #fff;
-
-  left: ${({ isLeft }) => isLeft && `${isLeft / 5}px`};
-  right: ${({ isRight }) => isRight && `${isRight / 9}px`};
+  ${MediaQueries({ minWidth: 1200 })} {
+    height: auto;
+  }
 `;
 
 const DRAG_OFFSET = 300;
@@ -73,26 +42,27 @@ const Slide = ({ ...props }) => {
   const [left, setLeft] = useState(0);
 
   const dragData = useRef(createDragData());
-  const slideBoxRef = useRef(null);
-  const slideRef = useRef(null);
+  const slideListRef = useRef(null);
+  const slideItemRef = useRef(null);
 
   useEffect(() => {
-    const itemWidth = slideRef.current.offsetWidth;
+    const itemWidth = slideItemRef.current.offsetWidth;
     const totalWidth = itemWidth * 5;
     const baseLeft = window.innerWidth / 2 - totalWidth / 2;
 
     dragData.current.initialize({ itemWidth, totalWidth, baseLeft });
+    setLeft(dragData.current.baseLeft);
   }, []);
 
   useEffect(() => {
     setLeft(dragData.current.baseLeft);
   }, [index, dragging]);
 
-  const handleClickLeft = (e) => {
+  const handleClickLeft = () => {
     setIndex(prev(index, lastIndex));
   };
 
-  const handleClickRight = (e) => {
+  const handleClickRight = () => {
     setIndex(next(index, lastIndex));
   };
 
@@ -127,25 +97,19 @@ const Slide = ({ ...props }) => {
   };
 
   return (
-    <SlideContainer {...props}>
-      <SlideWrapper>
-        <ButtonContainer>
-          <SlideBox
-            index={index}
-            onMouseDown={dragStart}
-            onMouseMove={mouseMove}
-            onMouseUp={dragEnd}
-            slideBoxRef={slideBoxRef}
-            slideRef={slideRef}
-            left={left}
-          />
-          <Buttons
-            handleClickLeft={handleClickLeft}
-            handleClickRight={handleClickRight}
-          />
-        </ButtonContainer>
-      </SlideWrapper>
-    </SlideContainer>
+    <TopBanner {...props}>
+      <SlideList
+        index={index}
+        onMouseDown={dragStart}
+        onMouseMove={mouseMove}
+        onMouseUp={dragEnd}
+        slideListRef={slideListRef}
+        slideItemRef={slideItemRef}
+        left={left}
+      />
+      <ArrowButton isRight={true} handleClick={handleClickRight} />
+      <ArrowButton handleClick={handleClickLeft} />
+    </TopBanner>
   );
 };
 export default Slide;

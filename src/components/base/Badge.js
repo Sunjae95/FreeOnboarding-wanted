@@ -8,9 +8,9 @@ const BadgeWrapper = styled.span`
   padding: 0 !important;
 
   display: inline-flex;
-  width: 13px;
-  height: 13px;
-  background-color: rgb(51, 102, 255);
+  width: 16px;
+  height: 16px;
+  background: #36f;
   align-items: center;
   justify-content: center;
   border-radius: 5px;

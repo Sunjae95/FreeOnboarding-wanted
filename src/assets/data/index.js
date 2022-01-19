@@ -1,3 +1,17 @@
+import { ReactComponent as NewIcon } from '@assets/icon/new-icon.svg';
+import { ReactComponent as BetaIcon } from '@assets/icon/beta-icon.svg';
+
+export const menuItems = [
+  { text: '홈', badge: null },
+  { text: '채용', badge: null },
+  { text: '이벤트', badge: null },
+  { text: '직군별 연봉', badge: null },
+  { text: '이력서', badge: null },
+  { text: '커뮤니티', badge: { tag: 'em', text: <NewIcon /> } },
+  { text: '프리랜서', badge: null },
+  { text: 'AI 합격예측', badge: { tag: 'span', text: <BetaIcon /> } },
+];
+
 export const slideContents = [
   {
     src: 'https://static.wanted.co.kr/images/banners/1489/312a0c29.jpg',
